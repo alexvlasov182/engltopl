@@ -22,6 +22,8 @@ group :development, :test do
   gem 'capybara'
   gem 'database_cleaner'
   gem 'rspec-rails', '~> 3.0'
+  gem 'shoulda-matchers', '~> 4.0.0rc1'
+  gem 'rails-controller-testing'
 end
 
 group :development do
