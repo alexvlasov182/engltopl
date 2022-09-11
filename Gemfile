@@ -24,6 +24,7 @@ group :development, :test do
   gem 'database_cleaner'
   gem 'rspec-rails', '~> 3.0'
   gem 'shoulda-matchers', '~> 4.0.0rc1'
+  gem 'factory_bot_rails'
   gem 'rails-controller-testing'
 end
 
