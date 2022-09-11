@@ -1,3 +1,3 @@
 class Word < ApplicationRecord
-  #validates :value, :language, presence: true
+  validates :value, :language, presence: true
 end
