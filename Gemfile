@@ -54,5 +54,6 @@ gem 'tzinfo-data', platforms: %i[mingw mswin x64_mingw jruby]
 #gem 'twilio-ruby', '~> 4.11', '>= 4.11.1'
 gem 'haml-rails', '~> 1.0'
 gem 'bootstrap', '~> 4.1.3'
+gem 'language_list', '~> 1.2', '>= 1.2.1'
 
 ruby '2.7.6'
