@@ -2,6 +2,6 @@
 
 FactoryBot.define do
   factory :language do
-    name { 'MyString' }
+    name { 'English' }
   end
 end
