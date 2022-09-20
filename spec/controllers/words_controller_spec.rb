@@ -114,7 +114,13 @@ RSpec.describe WordsController, type: :controller do
       end
 
       it 'updates word' do
-        expect { subject }.to change { word.reload.content }.from('cat').to('kot').and change { word.reload.language }.from(language_1).to(language_2)
+        expect { subject }
+          .to change { word.reload.content }
+          .from('cat')
+          .to('kot')
+          .and change { word.reload.language }
+          .from(language_1)
+          .to(language_2)
       end
     end
 
@@ -127,4 +133,24 @@ RSpec.describe WordsController, type: :controller do
       end
     end
   end
+
+  describe 'DELETE destroy' do
+    subject { delete :destroy, params: params }
+
+    let!(:word) { create(:word) }
+
+
+    context 'valid params' do
+
+      let(:params) do
+        { id: word.id }
+      end
+
+      it 'delete word' do
+        expect { subject }.to change(Word, :count).from(1).to(0)
+      end
+    end
+    
+  end
+
 end
