@@ -23,6 +23,7 @@ group :development, :test do
   gem 'capybara'
   gem 'database_cleaner'
   gem 'factory_bot_rails'
+  gem 'faker'
   gem 'pry-rails'
   gem 'rails-controller-testing'
   gem 'rspec-rails', '~> 3.0'
