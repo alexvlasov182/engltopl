@@ -150,7 +150,7 @@ RSpec.describe WordsController, type: :controller do
         expect { subject }.to change(Word, :count).from(1).to(0)
       end
     end
-    
+
   end
 
 end
