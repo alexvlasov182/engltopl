@@ -48,7 +48,6 @@ RSpec.describe WordsController, type: :controller do
       it do
         expect(response).to have_http_status(200)
       end
-
     end
 
     context 'when user is NOT signed in' do
@@ -67,7 +66,6 @@ RSpec.describe WordsController, type: :controller do
       it do
         expect(response).to have_http_status(302)
       end
-
     end
   end
 
@@ -111,7 +109,6 @@ RSpec.describe WordsController, type: :controller do
     end
 
     context 'when user is NOT signed in' do
-
       context 'valid params' do
         let!(:language) { create(:language) }
         let(:params) do
@@ -187,9 +184,8 @@ RSpec.describe WordsController, type: :controller do
     let!(:language_2) { create(:language, name: 'Polish') }
 
     context 'valid params' do
-
       let(:params) do
-        {id: word.id, word: { content: 'kot', language_id: language_2.id } }
+        { id: word.id, word: { content: 'kot', language_id: language_2.id } }
       end
 
       # it 'updates word' do
@@ -205,7 +201,7 @@ RSpec.describe WordsController, type: :controller do
 
     context 'invalid params' do
       let(:params) do
-        {id: word.id, word: { content: '' } }
+        { id: word.id, word: { content: '' } }
       end
       it 'does not update word' do
         expect { subject }.not_to change { word.reload.content }
@@ -218,9 +214,7 @@ RSpec.describe WordsController, type: :controller do
 
     let!(:word) { create(:word) }
 
-
     context 'valid params' do
-
       let(:params) do
         { id: word.id }
       end
@@ -229,7 +223,5 @@ RSpec.describe WordsController, type: :controller do
       #   expect { subject }.to change(Word, :count).from(1).to(0)
       # end
     end
-
   end
-
 end
