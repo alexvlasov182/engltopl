@@ -160,20 +160,45 @@ RSpec.describe WordsController, type: :controller do
   end
 
   describe 'GET edit' do
-    before { get :edit, params: params }
+    subject { get :edit, params: params }
 
-    let(:params)  do
-      { id: word.id }
+    context 'when user is signed in' do
+      let(:user) { create(:user) }
+      before do
+        sign_in(user)
+        subject
+      end
+
+      let(:params)  do
+        { id: word.id }
+      end
+      let!(:word) { create(:word) }
+
+      it 'assigns @word' do
+        expect(assigns(:word)).to eq(word)
+      end
+
+      it 'renders the edit template' do
+        expect(response).to render_template(:edit)
+      end
     end
-    let!(:word) { create(:word) }
 
-    # it 'assigns @word' do
-    #   expect(assigns(:word)).to eq(word)
-    # end
+    context 'when user is NOT signed in' do
 
-    # it 'render the edit template' do
-    #   expect(response).to render_template(:edit)
-    # end
+      let(:params)  do
+        { id: word.id }
+      end
+      let!(:word) { create(:word) }
+
+      it 'does not assign @word' do
+        expect(assigns(:word)).to eq(nil)
+      end
+
+      it do
+        subject
+        expect(response).to have_http_status(302)
+      end
+    end
   end
 
   describe 'PUT update' do
