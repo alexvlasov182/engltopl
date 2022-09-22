@@ -162,17 +162,17 @@ RSpec.describe WordsController, type: :controller do
   describe 'GET edit' do
     subject { get :edit, params: params }
 
+    let(:params)  do
+      { id: word.id }
+    end
+    let!(:word) { create(:word) }
+
     context 'when user is signed in' do
       let(:user) { create(:user) }
       before do
         sign_in(user)
         subject
       end
-
-      let(:params)  do
-        { id: word.id }
-      end
-      let!(:word) { create(:word) }
 
       it 'assigns @word' do
         expect(assigns(:word)).to eq(word)
@@ -184,12 +184,6 @@ RSpec.describe WordsController, type: :controller do
     end
 
     context 'when user is NOT signed in' do
-
-      let(:params)  do
-        { id: word.id }
-      end
-      let!(:word) { create(:word) }
-
       it 'does not assign @word' do
         expect(assigns(:word)).to eq(nil)
       end
@@ -208,28 +202,56 @@ RSpec.describe WordsController, type: :controller do
     let!(:language_1) { create(:language, name: 'English') }
     let!(:language_2) { create(:language, name: 'Polish') }
 
-    context 'valid params' do
-      let(:params) do
-        { id: word.id, word: { content: 'kot', language_id: language_2.id } }
+    context 'when user is signed in' do
+      let(:user) { create(:user) }
+      before do
+        sign_in(user)
       end
 
-      # it 'updates word' do
-      #   expect { subject }
-      #     .to change { word.reload.content }
-      #     .from('cat')
-      #     .to('kot')
-      #     .and change { word.reload.language }
-      #     .from(language_1)
-      #     .to(language_2)
-      # end
+      context 'valid params' do
+        let(:params) do
+          { id: word.id, word: { content: 'kot', language_id: language_2.id } }
+        end
+
+        it 'updates word' do
+          expect { subject }
+            .to change { word.reload.content }
+            .from('cat')
+            .to('kot')
+            .and change { word.reload.language }
+            .from(language_1)
+            .to(language_2)
+        end
+      end
+
+      context 'invalid params' do
+        let(:params) do
+          { id: word.id, word: { content: '' } }
+        end
+        it 'does not update word' do
+          expect { subject }.not_to change { word.reload.content }
+        end
+      end
     end
 
-    context 'invalid params' do
-      let(:params) do
-        { id: word.id, word: { content: '' } }
+    context 'when user is NOT signed in' do
+      context 'valid params' do
+        let(:params) do
+          { id: word.id, word: { content: 'kot', language_id: language_2.id } }
+        end
+
+        it 'does not update word' do
+          expect { subject }.not_to change { word.reload.content }
+        end
       end
-      it 'does not update word' do
-        expect { subject }.not_to change { word.reload.content }
+
+      context 'invalid params' do
+        let(:params) do
+          { id: word.id, word: { content: '' } }
+        end
+        it 'does not update word' do
+          expect { subject }.not_to change { word.reload.content }
+        end
       end
     end
   end
@@ -239,14 +261,33 @@ RSpec.describe WordsController, type: :controller do
 
     let!(:word) { create(:word) }
 
-    context 'valid params' do
-      let(:params) do
-        { id: word.id }
+    context 'when user is signed in' do
+      let(:user) { create(:user) }
+      before do
+        sign_in(user)
       end
 
-      # it 'delete word' do
-      #   expect { subject }.to change(Word, :count).from(1).to(0)
-      # end
+      context 'valid params' do
+        let(:params) do
+          { id: word.id }
+        end
+
+        it 'delete word' do
+          expect { subject }.to change(Word, :count).from(1).to(0)
+        end
+      end
+    end
+
+    context 'when user is NOT signed in' do
+      context 'valid params' do
+        let(:params) do
+          { id: word.id }
+        end
+
+        it 'does not delete word' do
+          expect { subject }.not_to change(Word, :count)
+        end
+      end
     end
   end
 end
