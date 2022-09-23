@@ -56,5 +56,6 @@ gem 'devise', '~> 4.2'
 gem 'bootstrap', '~> 4.1.3'
 gem 'haml-rails', '~> 1.0'
 gem 'language_list', '~> 1.2', '>= 1.2.1'
+gem 'pundit', '~> 1.1'
 
 ruby '2.7.6'
