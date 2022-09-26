@@ -33,6 +33,7 @@ group :development, :test do
 end
 
 group :development do
+  gem 'brakeman'
   gem 'listen', '~> 3.0.5'
   gem 'rubocop', '~> 1.25.0'
   gem 'rubocop-performance', '~> 1.0'
