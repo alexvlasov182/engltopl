@@ -51,9 +51,9 @@ gem 'tzinfo-data', platforms: %i[mingw mswin x64_mingw jruby]
 # gem 'dotenv-rails', group: %i[development test]
 # gem 'gritter', '1.2.0'
 # gem 'twilio-ruby', '~> 4.11', '>= 4.11.1'
-gem 'devise', '~> 4.2'
 gem 'bootstrap', '~> 4.1.3'
+gem 'devise', '~> 4.2'
 gem 'haml-rails', '~> 1.0'
+gem 'kaminari', '~> 1.2', '>= 1.2.2'
 gem 'language_list', '~> 1.2', '>= 1.2.1'
 gem 'pundit', '~> 1.1'
-gem 'kaminari', '~> 1.2', '>= 1.2.2'

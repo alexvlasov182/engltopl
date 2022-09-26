@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 class WordPolicy
   attr_reader :user, :word
 
