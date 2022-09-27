@@ -49,7 +49,8 @@ class WordsController < ApplicationController
   private
 
   def word_params
-    params.require(:word).permit(:content, :language_id, translations_attributes: [:id, :content, :language_id, :_destroy])
+    params.require(:word).permit(:content, :language_id,
+                                 translations_attributes: %i[id content language_id _destroy])
   end
 
   def set_word
