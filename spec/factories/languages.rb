@@ -4,4 +4,8 @@ FactoryBot.define do
   factory :language do
     name { 'English' }
   end
+
+  trait :polish do
+    name { 'Polish' }
+  end
 end
