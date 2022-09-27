@@ -145,6 +145,7 @@ GEM
     method_source (1.0.0)
     mini_mime (1.1.2)
     minitest (5.16.3)
+    nested_form (0.3.2)
     nio4r (2.5.8)
     nokogiri (1.13.8-x86_64-darwin)
       racc (~> 1.4)
@@ -312,6 +313,7 @@ DEPENDENCIES
   kaminari (~> 1.2, >= 1.2.2)
   language_list (~> 1.2, >= 1.2.1)
   listen (~> 3.0.5)
+  nested_form (~> 0.3.2)
   pg (~> 0.18)
   pry-rails
   puma (~> 3.0)
