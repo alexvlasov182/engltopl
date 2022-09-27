@@ -5,3 +5,8 @@
   = @word.language&.name
 %p
   = @word.user&.email
+
+- if @word.translations.any?
+  %h3 Translations
+  %p
+    = @word.translations.pluck(:content).join(', ')
