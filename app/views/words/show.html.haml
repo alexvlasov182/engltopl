@@ -1,12 +1,13 @@
-%h1 Word
+%h1= @word.content
+
 %p
-  = @word.content
-%p
+  Language:
   = @word.language&.name
 %p
+  %h3 User:
   = @word.user&.email
 
 - if @word.translations.any?
-  %h3 Translations
+  %h3 Translations:
   %p
     = @word.translations.pluck(:content).join(', ')

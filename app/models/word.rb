@@ -20,6 +20,7 @@ class Word < ApplicationRecord
 
   def translations_cannot_be_in_the_same_language_as_word
     return if translations.none? { |translation| translation.language == language }
+
     errors.add(:language, 'must be different than language of translations.')
   end
 end

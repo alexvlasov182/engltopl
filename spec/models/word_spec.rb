@@ -29,7 +29,6 @@ RSpec.describe Word, type: :model do
       let(:language_1) { create(:language) }
       let(:word_1) { build(:word, language: language_1) }
 
-
       context 'when translation is in the same language' do
         let(:word_2) { build(:word, language: language_1) }
         before do
