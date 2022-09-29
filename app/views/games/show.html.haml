@@ -4,6 +4,11 @@
     .col-md-12
       %h1
         Game
-        = @game.id
-      %p= @game.user.email
+        \##{@game.id}
+      %p
+        Good Answer:
+        = @game.good_answers_count
+      %p
+        Bad Answer:
+        = @game.bad_answers_count
 
