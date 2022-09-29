@@ -30,4 +30,51 @@ RSpec.describe GamesController, type: :controller do
       end
     end
   end
+
+  describe 'GET show' do
+    subject { get :show, params: params }
+
+    context 'when user is signed in' do
+      let(:user) { create(:user) }
+
+      before { sign_in(user) }
+
+      let(:params)  do
+        { id: game.id }
+      end
+      let!(:game) { create(:game) }
+
+      it 'assigns @game' do
+        subject
+        expect(assigns(:game)).to eq(game)
+      end
+
+      it 'render the show template' do
+        subject
+        expect(response).to render_template(:show)
+      end
+    end
+
+    context 'when user is NOT signed in' do
+      let(:params)  do
+        { id: game.id }
+      end
+      let!(:game) { create(:game) }
+
+      it 'does not assign @game' do
+        subject
+        expect(assigns(:game)).not_to eq(game)
+      end
+
+      it 'does not render the show template' do
+        subject
+        expect(response).not_to render_template(:show)
+      end
+
+      it do
+        subject
+        expect(response).to have_http_status(302)
+      end
+    end
+  end
 end
