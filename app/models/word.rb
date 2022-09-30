@@ -6,7 +6,8 @@ class Word < ApplicationRecord
 
   has_many :translations_association, class_name: 'Translation', dependent: :destroy
   has_many :translations, through: :translations_association, source: :translated_word, dependent: :destroy
-  has_many :inverse_translations_association, class_name: 'Translation', foreign_key: 'translated_word_id',dependent: :destroy
+  has_many :inverse_translations_association, class_name: 'Translation', foreign_key: 'translated_word_id',
+                                              dependent: :destroy
   has_many :inverse_translations, through: :inverse_translations_association, source: :word, dependent: :destroy
 
   validates :content, :language, presence: true

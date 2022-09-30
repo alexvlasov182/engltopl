@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 class GamesController < ApplicationController
   before_action :authenticate_user!, only: %i[create show]
 
@@ -9,5 +11,6 @@ class GamesController < ApplicationController
   def show
     @game = Game.find(params[:id])
     authorize @game
+    @word = Words::RandomWord.new.call
   end
 end
