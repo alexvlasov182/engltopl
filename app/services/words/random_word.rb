@@ -9,7 +9,7 @@ module Words
     private
 
     def get_random_word
-      Word.order('RANDOM()').limit(1).first
+      Word.joins(:translations).order('RANDOM()').limit(1).first
     end
   end
 end
