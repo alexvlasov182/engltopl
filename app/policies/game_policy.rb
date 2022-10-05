@@ -8,6 +8,10 @@ class GamePolicy
     @game = game
   end
 
+  def access?
+    game_belongs_to_user?
+  end
+
   def show?
     game_belongs_to_user?
   end
