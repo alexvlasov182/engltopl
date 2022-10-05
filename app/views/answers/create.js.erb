@@ -1,0 +1,11 @@
+<%	if @checker == true  %>
+  $('#answer_content').addClass('bg-success');
+<% else %>
+  $('#answer_content').addClass('bg-danger');
+<%	end %>
+
+location.reload();
+
+setTimeout(function () {
+    location.reload();
+}, 2000)

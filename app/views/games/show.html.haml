@@ -1,7 +1,7 @@
 .container-fluid
   .jumbotron.text-center
     %h1.display-4= @word.content
-    = simple_form_for :answer, url: answers_path, method: :post do |f|
+    = simple_form_for :answer, url: answers_path, method: :post, remote: true do |f|
       = f.input :content, label: false, as: :string, input_html: { autocomplete: 'off', autofocus: true }
       = f.input :word_id, as: :hidden, input_html: { value: @word.id }
       = f.input :game_id, as: :hidden, input_html: { value: @game.id }
