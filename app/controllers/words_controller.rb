@@ -10,6 +10,7 @@ class WordsController < ApplicationController
 
   def new
     @word = current_user.words.new
+    @word.translations.new
   end
 
   def create
