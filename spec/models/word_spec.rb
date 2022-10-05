@@ -15,7 +15,7 @@ RSpec.describe Word, type: :model do
     it { is_expected.to belong_to(:language) }
     it { is_expected.to belong_to(:user) }
     it { is_expected.to have_many(:translations_association).class_name('Translation') }
-    it { is_expected.to have_many(:translations).through(:translations_association).source(:translated_word) }
+    it { is_expected.to have_many(:translations).through(:translations_association).source(:translated_word).dependent(:destroy) }
     it {
       is_expected.to have_many(:inverse_translations_association).class_name('Translation').with_foreign_key('translated_word_id')
     }
